@@ -20,7 +20,7 @@ const setGoals =asyncHandler( async(req, res)=>{
         throw new Error('please add a text field')
     }
 
-    const goal = await Goal.create({
+    const goal = await Goal.insertOne({
         text: req.body.text
     })
 
@@ -38,7 +38,7 @@ const updateGoals =asyncHandler(async(req, res)=>{
         res.status(400)
         throw new Error('goal not found')
     }
-    const updateGoal = await Goal.findByIdAndUpdate(req.params.id,
+    const updateGoal = await Goal.updateOne(req.params.id,
         req.body, {
             new: true
         })
@@ -55,7 +55,7 @@ const deleteGoals =asyncHandler(async(req, res)=>{
         res.status(400)
         throw new Error('goal not found')
     }
-    await goal.remove()
+    await goal.deleteOne()
 
     res.status(200).json({id: req.params.id})
 }
