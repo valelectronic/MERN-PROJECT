@@ -11,7 +11,7 @@ const getGoals =asyncHandler (async(req, res)=>{
     res.status(200).json(goals)
 })
 
-// @desc get goals
+// @desc set goals
 // @route Post/api/goals
 // @access private
 const setGoals =asyncHandler( async(req, res)=>{
@@ -21,13 +21,13 @@ const setGoals =asyncHandler( async(req, res)=>{
     }
 
     const goal = await Goal.create({
-        text: req.body.text
+        Text: req.body.text
     })
 
 
     res.status(200).json(goal)
 })
-// @desc get goals
+// @desc update goals
 // @route put/api/goals/:id
 // @access private
 const updateGoals =asyncHandler(async(req, res)=>{
@@ -45,7 +45,7 @@ const updateGoals =asyncHandler(async(req, res)=>{
     res.status(200).json(updateGoal)
     
 })
-// @desc get goals
+// @desc delete goals
 // @route delete/api/goals/:id
 // @access private
 const deleteGoals =asyncHandler(async(req, res)=>{
